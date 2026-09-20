@@ -1,0 +1,293 @@
+NYDO ORIGINAL 1.0.0  -  Forge 1.20.1 (47.4.22)
+==============================================
+
+O que e
+-------
+NydoMod 5.0 rodando como ele foi feito, num mundo de geracao normal com as
+cinco vilas e o covil da Akatsuki ja construidos. Nada do NYDO Shinobi 0.9.0
+entra aqui: sem cerco de totem, sem proteccao de vila, sem faccoes, sem viagem
+entre vilas, sem noite de caca, sem limitador de spawn, sem dificuldade 2x, sem
+disfarce Akatsuki, sem missoes/menu/onboarding/recompensas do datapack antigo e
+sem nenhum override de loot table.
+
+Spawn dos bichos, dano, XP ninja, loot, dificuldade e gamerules: tudo padrao do
+mod.
+
+Duas gamerules ficam LIGADAS de proposito, o resto no padrao:
+
+  keepInventory=true   nao perde o inventario ao morrer
+  keepChakra=true      nao perde chakra, XP ninja NEM O CLA ao morrer
+
+O keepChakra e o mais importante dos dois. Com ele em false (o padrao do mod) o
+NinjaProgressionDeathCleaner do NydoMod roda clearClanAndProfileOnNonKeptDeath:
+voce deixa de ser Uchiha toda vez que morre, e o chakra e o XP ninja zeram
+junto. Isso anularia o drop de 2% do olho do Itachi/Obito, que so vale para
+quem e do cla Uchiha.
+
+
+As mudancas (mod nydo-original-1.0.0.jar)
+-----------------------------------------
+1. Biju nao nasce sozinho e nao tem evento automatico. A unica forma de uma
+   aparecer e um admin soltar com /nydo_biju evento (ou spawn egg).
+2. Dojutsu nunca cai na morte - nem em PvP, nem por mob, nem por qualquer outra
+   causa, independente de gamerule. O olho que estava na mao ou na mochila e
+   recolhido para a Roda antes dos drops.
+3. Biju NAO e roubada de quem voce mata: quando um jinchuriki morre, UMA das
+   bijus dele (sorteada) escapa no lugar exato da morte e fica solta para quem
+   conseguir capturar. Aviso com coordenada no chat.
+4. Olho do Itachi e do Obito caem a 2%, e so quando quem matou e do cla Uchiha.
+   (No mod original o do Itachi cai em 100% das mortes por codigo e o do Obito
+   em 3% pela loot table. O do Obito sai carimbado com o UUID do mob para valer
+   como olho alheio no Ritual do Mangekyo Eterno, igual ao do Itachi.)
+5. Vila e so o totem e os quatro mercadores. Os 31 ninjas de enfeite que
+   ficavam em volta do totem (Iruka, Sakura, Kakashi, Guy, guardas...) foram
+   removidos: a galera farmava neles em vez de cacar mob no mundo. Eles tinham
+   RespawnMode TIMED gravado no registro do mod, entao alem de tirar do
+   datapack o addon descarta qualquer um que tente voltar.
+
+   Os mercadores sao imortais de verdade: nenhum dano com atacante passa, nem
+   por espada, nem por jutsu, nem por taijutsu. Dano sem dono (/kill, void)
+   continua passando, senao nem o reparo das vilas conseguiria refazer a
+   populacao. Loja nao passa por IA, entao eles continuam vendendo normal.
+
+   Os seis NPCs da Akatsuki no covil ficam, porque ali eles SAO o cenario -
+   e o covil que vende armas (Kisame), roupas (Sasori), pergaminhos (Itachi e
+   Konan) e raros (Deidara e Pain).
+
+6. Amaterasu nao pega em Biju. O fogo negro nao da dano direto: o jutsu e o
+   bloco so aplicam o efeito AMATERASU_FLAME, e quem tira vida e o tick dele.
+   Em Biju o efeito e recusado, entao o fogo nao gruda. Vale para o Jubi.
+   Em qualquer outro alvo o Amaterasu continua igual ao original.
+
+7. A lista do Tab fica vazia: ninguem ve quem esta online. Nome e skin
+   continuam chegando normalmente ao cliente (so o sinalizador "listed" vai
+   como false, um segundo depois do login), entao ninguem vira Steve - o que
+   some e so a listagem. Quem e da Akatsuki agradece.
+
+8. Explosao nao quebra bloco nas cinco vilas nem no covil. TNT, creeper,
+   ghast: o estrago em bloco e apagado dentro de um raio de 56 blocos do
+   marcador de cada vila (72 no covil). Quebrar e colocar bloco na mao
+   continua igual, e a explosao ainda machuca quem estiver perto - o que ela
+   nao faz mais e estragar a construcao. Explosao na borda derruba o que esta
+   do lado de fora e nao encosta no que esta dentro.
+
+9. O Selo de biju nao entra em nada que guarde item. Bau, bau duplo, barril,
+   shulker, ender chest, funil, dropper, dispenser, fornalha, carrinho com
+   bau e mochila: nenhum aceita. O funil tambem nao come o Selo do chao e o
+   dropper nao consegue empurrar para dentro de um bau. Ele so fica no seu
+   inventario ou solto no chao - que e justamente como se passa a biju para
+   outra pessoa. Sem isso dava para estocar biju num bau e guardar as nove.
+
+10. A Fruta do Chakra saiu do jogo. Ela dava Rinne-Sharingan e Kekkei Mora
+    para quem so juntasse dinheiro, sem receita e sem loot: a unica porta era
+    a loja do mercador. Nao esta mais a venda em nenhum catalogo, sumiu da aba
+    do criativo, e se alguem tiver uma guardada comer nao faz nada.
+
+
+Os mercadores de cada vila
+--------------------------
+Sao os mercadores do proprio NydoMod, perto do totem, pagos em ryo pela loja do
+mod (precisa da carteira shinobi no inventario). Todos imortais, fixos no lugar
+e com nome visivel:
+
+  Tenten (Armas)            catalogo fixo de armas do mod
+  Mercador de Comida        6 ofertas por rodada, giro de 1 hora
+  Mercador de Pergaminhos   8 ofertas por rodada, giro de 1 hora
+  Mercador de Raridades     5 ofertas por rodada, giro de 1 hora
+
+O de raridades nao existia no datapack do mod - foi acrescentado. Os outros
+tres ja vinham e so ficaram imortais e parados.
+
+A Tenten nao rotaciona: o giro e so em comida, pergaminhos e raros.
+
+Os demais NPCs da praca (Kakashi, Sakura, Iruka, Kurotsuchi, os guardas) e os
+seis da Akatsuki no covil continuam onde estao, mas so de enfeite: nao tomam
+dano e nao fazem nada.
+
+O estoque e sorteado do catalogo do proprio mod, com os itens, as quantidades e
+os precos que ele ja define - o que muda a cada hora e quais ofertas estao na
+vitrine. Aviso no chat 5 minutos antes do giro. A rodada sai do relogio do
+mundo, entao reiniciar o servidor nao troca a vitrine no meio da hora.
+
+Comandos de admin:
+  /nydo_vilas reparar     apaga e refaz os NPCs e os mercadores das cinco vilas
+                          e do covil, um lugar por vez, carregando o chunk de
+                          cada um antes. Rodar duas vezes nao duplica. Se o
+                          lugar nao puder ser atendido, avisa no chat e nao
+                          mexe em nada ali.
+  /nydo_mercado reparar   atalho para o mesmo reparo
+  /nydo_mercado girar     forca um sorteio novo de estoque na hora
+
+
+As cinco vilas
+--------------
+Cada vila ocupa uma plataforma de 80x80 num nivel so - sem o degrau que existia
+entre a praca e o resto. A planta e a mesma nas cinco, porque as posicoes ja
+estavam no mundo (marcador no centro, totem e os quatro mercadores):
+
+  muralha com ameias e quatro torres de canto;
+  portao principal ao sul, com os dois pilares altos e a travessa;
+  avenida do portao ate a praca, e rua transversal ligando leste e oeste;
+  praca central com o totem, canteiros e bancos;
+  torre do Kage ao norte, de 29 blocos, com o emblema da vila virado para a
+    praca e escada de mao por dentro ate o topo;
+  mercado coberto a leste, sobre os quatro mercadores;
+  quarteiroes de moradia nos quatro cantos, com beco de tres blocos;
+  um marco proprio sobre a avenida, diferente em cada vila, por onde se passa
+    antes de chegar na praca.
+
+As casas sao mobiliadas: cama, bancada, barril, estante, vaso e uma lanterna no
+teto. A lanterna nao e enfeite - casa fechada fica com luz zero por dentro e mob
+nasce ali. As cinco foram varridas a meia-noite com um teste de luz, ponto por
+ponto, e nenhuma tem um so lugar escuro onde caiba um mob. Isso inclui a viela
+entre a muralha e as casas, que era o pior ponto.
+
+O que muda e o material, o formato dos predios e o emblema:
+
+  Konoha  reboco branco, viga de pinho e telha vermelha; arvores na praca.
+          Emblema: a espiral da Folha.  Marco: um torii vermelho.
+  Suna    arenito do chao ao teto, casas fechadas por cupula, sem telhado.
+          Emblema: a ampulheta.  Marco: a fenda de arenito que se fecha por cima.
+  Kiri    ardosia e prismarinho, predios cilindricos, canais de agua ao longo
+          da avenida. Emblema: a nevoa.  Marco: uma ponte arqueada.
+  Kumo    quartzo branco, torres mais altas que as das outras vilas.
+          Emblema: a nuvem.  Marco: dois pilares com para-raios no topo.
+  Iwa     ladrilho de ardosia e basalto, tudo baixo e macico.
+          Emblema: o rochedo.  Marco: um arco macico de rocha.
+
+O covil da Akatsuki continua como estava - ele ja era o ponto forte do mapa.
+
+
+O mapa
+------
+Geracao normal do Minecraft. Cada sitio foi limpo e aplainado antes da vila
+subir, entao a plataforma fica inteira, sem buraco de terreno.
+
+  Konoha    0     71     0      (spawn do mundo)
+  Kiri      460   102   -150
+  Kumo      285   73     390
+  Iwa      -285   69     390
+  Suna     -460   73    -150
+  Covil     0     125   -820
+
+Konoha fica no meio, as outras quatro a 483 blocos dela - menos de 400 de borda
+a borda da plataforma, uns 20 segundos correndo. A maior distancia entre duas
+vilas e 920 (Kiri e Suna, lados opostos). O covil fica a 820 de Konoha.
+
+O anel inteiro das vilas (1.120 x 740 blocos) e a pegada do covil ja vem
+gerados, entao nao tem travada de chunk correndo de uma vila para a outra. O
+resto do mundo gera conforme a galera explora.
+
+
+O que tem em mods/
+------------------
+  NydoMod-5.0 + dependencias obrigatorias (GeckoLib, Player Animation, Bendy Lib)
+  nydo-original-1.0.0.jar  ......  as cinco regras acima
+  AttributeFix ..................  levanta o teto de atributo do vanilla; sem ele
+                                   coisas do proprio NydoMod (ex: +380 de vida do
+                                   Rinne Sharingan) sao cortadas
+  FTB Essentials + FTB Library + Architectury  ...  /home /tpa /rtp /warp /spawn
+  JEI, Sophisticated Backpacks + Core, Simple Voice Chat, SkinRestorer
+  Embeddium, FerriteCore, ModernFix, EntityCulling, ImmediatelyFast (desempenho)
+
+E um datapack enxuto (nydo-vilas-covil) dentro do mundo, so com as construcoes
+das vilas, o covil e os NPCs de cada lugar.
+
+
+Como instalar
+-------------
+CurseForge: Criar perfil personalizado > Importar > este zip.
+Prism / MultiMC: instancia Forge 1.20.1 47.4.22 e copiar o conteudo de
+"overrides" para dentro da pasta da instancia.
+
+O mundo ja vem em overrides/saves, aparece como "NYDO Original" na lista de
+mundos. Para servidor, usar o zip de servidor: la o mundo se chama "world".
+
+
+Biju: evento, roda e pergaminho
+-------------------------------
+Como uma biju aparece
+  So por /nydo_biju evento, na mao de um admin. Nao existe evento automatico e
+  nao existe spawn natural. O comando solta UMA biju sorteada entre as livres,
+  num ponto de terreno seco a 350-900 blocos do centro, e anuncia nome e
+  coordenada no chat. So uma por vez. Biju derrotada volta para o sorteio,
+  entao as nove nunca se esgotam.
+
+Morte do jinchuriki
+  Morreu carregando biju? UMA delas, sorteada, escapa no ponto da morte. Nao
+  vai tudo de uma vez. Se voce morreu sozinho num canto, da para correr de
+  volta e recapturar - so vira disputa se tiver gente por perto.
+
+Roda das Biju (tecla Y)
+  Da para carregar mais de uma biju. A tecla Y abre a roda para escolher qual
+  esta em uso: manto, jutsu especiais, vinculo e mindscape passam a responder
+  pela escolhida. Mouse escolhe, clique ou Enter confirma, 1-9 vai direto.
+  A tecla e remapeavel em Opcoes > Controles > NYDO Original.
+
+  Sem isso, carregar duas bijus travaria tudo na primeira da lista interna do
+  mod - por isso a roda nao e enfeite, e o que torna varias bijus viavel.
+
+Sacar uma biju (botao direito na roda)
+  Na roda, o botao DIREITO - ou a tecla S - saca a biju apontada em vez de
+  troca-la. Ela sai de voce e vira um Selo na sua mao, com a cara dela: o item
+  e o ovo da propria biju, entao da para saber qual e so de bater o olho.
+
+  O Selo pode ser jogado no chao e entregue a outra pessoa. Quem clicar com o
+  botao direito nele vira jinchuriki daquela biju. E assim que se passa biju
+  para outra pessoa.
+
+  O Selo nao entra em bau, barril, shulker, ender chest, funil, dropper nem
+  mochila, e funil nenhum pega ele do chao. Ou esta com voce, ou esta caido
+  no mundo a vista de todo mundo. Estocar biju em bau nao existe.
+
+  O ovo nao invoca bicho nenhum: o clique e interceptado antes disso.
+  Botao esquerdo, Enter ou 1-9 continuam so trocando qual biju esta em uso.
+
+Comandos de jogador
+  /nydo_biju minhas          lista suas bijus e marca a que esta em uso
+  /nydo_biju usar <1-9>      troca a biju em uso (mesmo efeito da roda)
+  /nydo_biju tirar <1-9>     tira a biju de voce e devolve o Selo dela
+
+Comandos de admin (nivel 2)
+  /nydo_biju evento          solta uma biju agora (unica forma de nascer)
+  /nydo_biju status          mostra quantas estao livres e se tem uma no mundo
+  /nydo_mercado ver          mostra o estoque da rodada atual dos mercadores
+  /nydo_mercado girar        sorteia um estoque novo na hora
+  /nydo_vilas reparar        apaga e refaz NPCs das cinco vilas e do covil
+
+As Dez Caudas - /ten
+  Cuidado com a confusao: /biju set 10 NAO invoca nada, ele so marca voce como
+  jinchuriki do Jubi. Por isso nao aparece bicho nenhum no mundo.
+
+  Para o Jubi nascer de verdade:
+  /ten          invoca o Jubi 12 blocos a sua frente, para ser capturado.
+                So funciona com as nove bijus seladas na Estatua Gedo - que e
+                a regra do proprio NydoMod ("Seal all nine into the statue to
+                awaken the Ten Tails"). Se faltar, o comando diz quantas.
+  /ten forcar   mesma coisa, sem a exigencia das nove (admin, nivel 2).
+
+  Quando o Jubi morre, as nove que estavam presas na Estatua voltam soltas ao
+  mundo e sao anunciadas no chat. O mod sozinho nao devolve - elas ficariam
+  trancadas para sempre e nenhuma biju apareceria de novo.
+
+
+Vila, chat e disfarce
+---------------------
+Nem o NydoMod nem o datapack tinham vila: existe /clan (dez clas) e mais nada.
+Isto aqui e do addon.
+
+  /vila                      mostra a sua vila
+  /vila lista                lista as seis
+  /vila set <vila> <jogador> coloca alguem numa vila (admin, nivel 2)
+  /vila tirar <jogador>      tira da vila (admin, nivel 2)
+
+  Vilas: Konoha, Suna, Kiri, Kumo, Iwa, Akatsuki - cada uma com sua cor.
+
+Disfarce
+  /disfarce          liga e desliga
+  /d <mensagem>      fala como "???", sem entregar quem e
+
+  Com o disfarce ligado, a tag colorida da vila some do chat - a cor sozinha ja
+  entregaria de onde a pessoa e. Falar normal continua mostrando seu nome de
+  verdade, mesmo disfarcado; quem quer anonimato usa /d. A vila e o disfarce
+  sobrevivem a morte e ao logout.
