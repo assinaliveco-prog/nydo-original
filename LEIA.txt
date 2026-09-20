@@ -54,10 +54,20 @@ As mudancas (mod nydo-original-1.0.0.jar)
    e o covil que vende armas (Kisame), roupas (Sasori), pergaminhos (Itachi e
    Konan) e raros (Deidara e Pain).
 
-6. Amaterasu nao pega em Biju. O fogo negro nao da dano direto: o jutsu e o
-   bloco so aplicam o efeito AMATERASU_FLAME, e quem tira vida e o tick dele.
-   Em Biju o efeito e recusado, entao o fogo nao gruda. Vale para o Jubi.
-   Em qualquer outro alvo o Amaterasu continua igual ao original.
+6. Amaterasu nao pega em Biju e dura 6,5 segundos. O fogo negro nao da dano
+   direto: o jutsu e o bloco so aplicam o efeito AMATERASU_FLAME, e quem tira
+   vida e o tick dele. Em Biju o efeito e recusado, entao o fogo nao gruda.
+   Vale para o Jubi.
+
+   No mod original a queimadura entra com 500 segundos e o fogo preto no chao
+   leva cerca de 43 minutos para se apagar sozinho - na pratica, eterno. Aqui os
+   dois duram 6,5 segundos (130 ticks) contados de quando pegaram. O dano por
+   segundo continua o do mod; o que mudou foi so por quanto tempo.
+
+   Como apagar antes: usar o Amaterasu AGACHADO apaga em vez de acender, num
+   cubo de 31 blocos em volta do ponto visado (ate 50 de distancia), e tira a
+   queimadura de todo mundo num raio de 15. Balde de leite tambem tira. Agua e
+   chuva nao apagam: o fogo preto evapora a agua em volta.
 
 7. A lista do Tab fica vazia: ninguem ve quem esta online. Nome e skin
    continuam chegando normalmente ao cliente (so o sinalizador "listed" vai

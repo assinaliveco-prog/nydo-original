@@ -28,7 +28,7 @@ O mundo vem dentro dos pacotes de cliente, em `saves/NYDO Original`.
 3. Biju nao e roubada de quem voce mata: uma delas escapa no lugar da morte.
 4. Olho do Itachi e do Obito a 2%, so para quem e do cla Uchiha.
 5. Vila e so o totem e os quatro mercadores, todos imortais.
-6. Amaterasu nao pega em Biju.
+6. Amaterasu nao pega em Biju e dura **6,5 segundos** (queimadura e fogo no chao).
 7. A lista do Tab fica vazia.
 8. Explosao nao quebra bloco nas vilas nem no covil.
 9. O Selo de biju nao entra em bau, barril, funil nem mochila.
